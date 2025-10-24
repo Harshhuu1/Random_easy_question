@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int romanToInt(string s) {
+        unordered_map<char,int> fre;
+        
+        fre['I']=1;
+        fre['V']=5;
+        fre['X']=10;
+        fre['L']=50;
+        fre['C']=100;
+        fre['D']=500;
+        fre['M']=1000;
+        int  result=fre[s.back()];
+       for(int i=s.length()-2;i>=0;i--){
+        if(fre[s[i]]>=fre[s[i+1]]){
+            result=result+fre[s[i]];
+
+        }
+        else
+        result-=fre[s[i]];
+       }
+       return result;
+        
+    }
+};
+// Here most important concept is 
+1).we will start from the end and check for ahead values if 
+i).The value is smaller means IX or IV means we have to substract from previous value like I and V V=5 and I=1 so V-I =4 thats correct IV=4
+else add it like VI =6 (1+5)
+see this is the logic
