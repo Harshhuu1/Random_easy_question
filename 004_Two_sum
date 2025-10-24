@@ -1,0 +1,21 @@
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& ar, int target) {
+     unordered_map<int,int> mp;
+     vector<int> ans;
+     for(int i=0;i<ar.size();i++){
+        // 
+        int comp=target-ar[i];
+        if(mp.find(comp)!=mp.end()){
+            ans={mp[comp],i};
+        }
+        mp[ar[i]]=i;
+     }
+      return ans;
+}};
+//Here i will use the trick that target=ar[i]+ar[j]
+but if i do reverse target-ar[i]=ar[j]
+now i will see whether the ar[j] present in my array or not if present i will return its indices and store the indices of elements in map;
