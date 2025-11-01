@@ -1,0 +1,34 @@
+class Solution {
+public:
+    bool helper(vector<int> &arr, int mid, int days){
+        int sum=0;
+        int day=1;
+        for(int i:arr){
+            sum+=i;
+            if(sum>mid){
+                day++;
+                sum=i;
+            }
+        if(day>days) return false;}
+        return true;
+    }
+
+    int shipWithinDays(vector<int>& weights, int days) {
+        int low=*max_element(weights.begin(),weights.end());
+        int e=accumulate(weights.begin(),weights.end(),0);
+        while(low<e){
+            int mid=(low+e)/2;
+            if(helper(weights,mid,days)){
+                e=mid;
+            }
+
+            else
+            low=mid+1;
+        }return low;}
+        
+        
+       
+    };
+        
+        
+    
