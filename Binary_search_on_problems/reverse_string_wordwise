@@ -1,0 +1,37 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+
+void reverseWord(string &s) {
+    int i = 0, j = s.size() - 1;
+    while (i < j) {
+        swap(s[i], s[j]);
+        i++;
+        j--;
+    }
+}
+
+void reverseStringWordWise(char input[]) {
+    stringstream ss(input);
+    string word;
+    string result = "";
+
+    while (ss >> word) {
+        reverseWord(word);
+        result += word + " ";
+    }
+
+    
+    if (!result.empty()) result.pop_back();
+
+   
+    reverse(result.begin(), result.end());
+
+    for(int i=0;input[i]!='\0';i++){
+        input[i]=result[i];
+    }
+    
+}
