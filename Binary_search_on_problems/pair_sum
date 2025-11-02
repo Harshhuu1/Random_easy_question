@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+
+vector<vector<int>> pairSum(vector<int> &arr, int s){
+   
+   unordered_map<int,int> mp;
+   vector<vector<int>>ans;
+
+   for(auto it:arr){
+       int comp=s-it;
+       if(mp[comp]>0){
+           int freq=mp[comp];
+           while(freq--){
+               ans.push_back({min(it,comp),max(it,comp)});
+
+           }
+           
+
+       }
+       mp[it]++;
+
+   }
+   sort(ans.begin(),ans.end());
+   return ans;
+}
+//Here main thing is to keep the track of the frequecny of the number so wwe can add this to result that many times..
