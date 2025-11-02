@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+string getCompressedString(string &input) {
+    map<char, int> mp;
+    string result = "";
+    int n = input.size();
+
+    for (int i = 0; i < n; i++) {
+        mp[input[i]]++;  // increase count for current char
+        
+        // If next char is different OR we're at the end
+        if (i == n - 1 || input[i] != input[i + 1]) {
+            result += input[i];
+            if (mp[input[i]] > 1) {
+                result += (mp[input[i]]+'0');
+            }
+            mp.clear();  // reset for next group
+        }
+    }
+    return result;
+}
+
+#include <bits/stdc++.h>
+using namespace std;
+
+string getCompressedString(string &input) {
+    
+    string result = "";
+    int n = input.size();
+    
+
+    for (int i = 0; i < n; i++) {
+        int count=1;
+        while(i+1<n && input[i]==input[i+1]){
+                count++;
+                i++;
+            }
+            result+=input[i];
+            if(count>1){
+                result+=count+'0';
+
+            }
+}
+return result;
+}
+
+
+
+
