@@ -1,0 +1,35 @@
+#include <bits/stdc++.h> 
+const int mod=1e9+7;
+// long long sum(long long int n){
+// 	long long  sum=0;
+// 	sum=(((n%mod)*(n+1)%mod)/2)%mod;
+// 	return sum%mod;
+
+// }
+// long long product(long long n){
+// 	long long  product1=1;
+// 	for(int i=1;i<=n;i++){
+// 		product1=(product1*i)%mod;
+// 	}
+// 	return product1%mod;
+// }
+long long sum(long long int n){
+	if(n==0) return 0;
+	return (n%mod+sum(n-1)%mod)%mod;
+}
+long long product(long long int n){
+	if(n==1)return n;
+	return ((n%mod)*product(n-1)%mod)%mod;
+}
+
+long long int sumOrProduct(long long int n, long long int q)
+{
+	// Write your code here.
+	if(q==1){
+		return sum(n)%mod;
+	}
+	else if(q==2){
+		return product(n)%mod;
+	}
+
+}
