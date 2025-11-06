@@ -1,0 +1,28 @@
+/*
+	Time Complexity: O(N)
+	Space Complexity: O(N)
+
+	Where 'N' is the total number of elements in the array.
+*/
+
+#include<unordered_map>
+
+vector<pair<int, int>> twoSum(vector<int>& arr, int target, int n)
+{	vector<pair<int, int>> ans;
+	unordered_map<int,int>freq;
+	for(auto x:arr) freq[x]++;
+	for(auto x:arr){
+		int y=target-x;
+		if(freq[x]>0 && freq[y]>0){
+			if(x==y && freq[x]<2) continue;
+			ans.push_back({x,y});
+			freq[x]--;
+			freq[y]--;
+		}
+
+	}
+	if(ans.empty())ans.push_back({-1,-1});
+	return ans;
+}
+
+
