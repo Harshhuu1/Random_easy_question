@@ -1,0 +1,30 @@
+void rev(int i,int j,string &s){
+	if(i>=j) return;
+	swap(s[i],s[j]);
+	return rev(i+1,j-1,s);
+	
+}
+string reverseString(string &str){
+
+	// Write your code here.	
+	vector<string>words;
+	for(int i=0;i<str.size();i++){
+		string word="";
+		while(i<str.size() &&str[i]!=' '){
+			word+=str[i];
+			i++;
+		}
+		if(!word.empty())
+		words.push_back(word);
+		
+
+	}
+	reverse(words.begin(),words.end());
+	string ans="";
+	for(int i=0;i<words.size();i++){
+		ans+=words[i];
+		if(i!=words.size()) ans+=" ";
+	}
+	return ans;
+
+}
