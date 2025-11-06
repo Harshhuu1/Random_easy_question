@@ -1,0 +1,19 @@
+int* getProductArrayExceptSelf(int *arr, int n) {
+    const int mod = 1e9 + 7;
+    int *ans = new int[n];
+
+    ans[0] = 1;
+    for (int i = 1; i < n; i++) {
+        long long val = ((long long)ans[i - 1] * arr[i - 1]) % mod;
+        ans[i] = (int)val;
+    }
+
+    long long suffix = 1;
+    for (int i = n - 1; i >= 0; i--) {
+        long long val = ((long long)ans[i] * suffix) % mod;
+        ans[i] = (int)((val + mod) % mod);
+        suffix = ((suffix * arr[i]) % mod + mod) % mod;
+    }
+
+    return ans;
+}
