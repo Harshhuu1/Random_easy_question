@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+
+int getFourthLargest(int arr[], int n)
+{
+    // Write your Code here
+    
+    if(n<4) return -2147483648
+;
+
+    priority_queue<int,vector<int> , greater<int>> minheap;
+    for(int i=0;i<n;i++){
+        minheap.push(arr[i]);
+        if(minheap.size()>k){
+             minheap.pop();
+        }
+    }
+    return minheap.top();
+
+    
+}
