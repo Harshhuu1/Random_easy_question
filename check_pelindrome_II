@@ -1,0 +1,30 @@
+#include <bits/stdc++.h> 
+string convert(string s){
+    string p;
+    for(int i=0;i<s.size();i++){
+        if(s[i]>='A' && s[i]<='Z'){
+            p.push_back(s[i]+32);
+        }
+        else if(s[i]>='a' && s[i]<='z'){
+            p.push_back(s[i]);
+        }
+        else if(s[i]>='0' && s[i]<='9'){
+            p.push_back(s[i]);
+        }
+        continue;
+        
+    }
+    return p;
+}
+bool check(int i,int j ,string s){
+    if(i>=j) return true;
+    if(s[i]!=s[j]) return false;
+    return check(i+1,j-1,s);
+}
+bool checkPalindrome(string s)
+{
+    // Write your code here.
+    string p=convert(s);
+    if(p.size()==0) return true;
+    return check(0,p.size()-1,p);
+}
