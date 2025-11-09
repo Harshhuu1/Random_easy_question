@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+long long excelColumnNumber(string input)
+{
+    
+   long long num = 0;
+// for (auto ch : input) {
+//     num = num * 26 + (ch - 'A' + 1);
+// }
+// or
+for(int i=0;i<input.size();i++)
+{
+    int digit=(input[i]-'A')+1;
+    num+=digit*pow(26,input.size()-i-1);
+}
+
+
+
+return num;
+    
+
+    
+}
