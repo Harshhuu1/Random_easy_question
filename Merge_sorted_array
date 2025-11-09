@@ -1,0 +1,29 @@
+class Solution {
+  public:
+    
+    vector<int> mergeArrays(vector<vector<int>> &mat) {
+        // Code here
+        priority_queue<vector<int>,vector<vector<int>>, greater<vector<int>>> heap;
+        
+        vector<int> result;
+        int n=mat.size();
+        for(int i=0;i<n;i++){
+            if(!mat[i].empty()){
+                heap.push({mat[i][0],i,0});            }
+        }
+        while(!heap.empty()){
+            auto node=heap.top();heap.pop();
+            int val=node[0];
+            int row=node[1];
+            int col=node[2];
+            result.push_back(val);
+            if(col+1<mat[row].size()){
+                heap.push({mat[row][col+1],row,col+1});
+            }
+            
+        }
+        return result;
+            
+        }
+    
+};
