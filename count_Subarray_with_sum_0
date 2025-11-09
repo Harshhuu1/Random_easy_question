@@ -1,0 +1,21 @@
+
+#include<unordered_map>
+long long countPositiveNegativePairs(int arr[], int n)
+{
+    //  Write your code here
+    unordered_map<int,int> mp;
+    long long count=0;
+    for(int i=0;i<n;i++)
+    {
+        int comp=-arr[i];
+        int freq=mp[comp];
+       
+            
+            count+=freq;
+
+        
+        mp[arr[i]]++;
+
+    }
+    return count;
+}
