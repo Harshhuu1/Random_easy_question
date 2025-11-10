@@ -1,0 +1,27 @@
+int nearestMulitple(int n) 
+{
+    // Write your code here.
+    // int i=0;
+    // while(true){
+    //     if(10*i>n){
+    //        break;
+            
+    //     }
+    //     i++;
+      
+        
+    // }
+    //       if(10*i-n>=5){
+    //     return 10*(i-1);
+    // }
+    // else 
+    // return 10*i;
+    int rem=n%10;
+    if(rem>5){
+        return n+(10-rem);
+    }
+    else
+    return n-rem;
+
+
+}
