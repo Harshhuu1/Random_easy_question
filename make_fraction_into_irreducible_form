@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+long long gcd(long long a, long long b) {
+    while (b != 0) {
+        long long temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+int trailedZero(string fractionalPart){
+    int count=0;
+    for(int i=fractionalPart.size()-1;i>=0;i--){
+        if(fractionalPart[i]==0){
+            count++;
+            
+        }
+        if(fractionalPart[i]!='0'){
+            break;
+        }
+    }
+    return count;
+}
+int makeNumber(int count){
+    if(count==0)  return 1;
+    return pow(10,count);
+
+}
+vector < long long > convertToIrreducible(string integerPart, string fractionalPart) {
+    
+    
+    string ans=integerPart+fractionalPart;
+
+    int count=trailedZero(fractionalPart);
+    int count1=8-count;
+    fractionalPart=fractionalPart.substr(0,fractionalPart.size()-count);
+     long long numerator = stoll(ans);
+    if (ans.empty()) return {0, 1};
+    long long denominator = makeNumber(fractionalPart.size());
+    long long g=gcd(numerator,denominator);
+    numerator/=g;
+    denominator/=g;
+    return {numerator,denominator};
+return {-1};
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+    
+
+
+}
