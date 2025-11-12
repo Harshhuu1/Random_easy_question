@@ -1,0 +1,22 @@
+void dfs(TreeNode<int>* grandparent, TreeNode<int>* parent, TreeNode<int>* current, int x, vector<vector<int>>& ans) {
+    if (!current) return;
+    
+    // Check if we have a complete grandparent-parent-child triplet
+    if (grandparent && parent) {
+        long long sum = (long long)grandparent->val + parent->val + current->val;
+        if (sum > x) {
+            ans.push_back({grandparent->val, parent->val, current->val});
+        }
+    }
+    
+    // Continue DFS: current becomes parent, its children become current
+    dfs(parent, current, current->left, x, ans);
+    dfs(parent, current, current->right, x, ans);
+}
+
+vector<vector<int>> findTriplets(TreeNode<int>* root, int x) 
+{
+    vector<vector<int>> ans;
+    dfs(nullptr, nullptr, root, x, ans);
+    return ans;
+}
