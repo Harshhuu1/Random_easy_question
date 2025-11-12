@@ -1,0 +1,92 @@
+// bool isLeapyead(int year){
+//     if((year%400==0)||(year%4==0 && year%100!=0)){
+//         return true;
+//     }
+//     return false;
+// }
+// int getday(int month,int year){
+// int months[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+//         if(month==2 && isLeapyead(year))
+//         return 29;
+    
+//     return months[month];
+    
+//     }
+// int countyear(int year){
+//     int totaldays = 0;
+    
+//     if (year >= 1900) {
+//         // Count forward from 1900 to year
+//         for(int i = 1900; i < year; i++){
+//             if(isLeapyead(i)){
+//                 totaldays += 366;
+//             }
+//             else {
+//                 totaldays += 365;
+//             }
+//         }
+//     } 
+//     else {
+//         // Count backward from 1900 to year
+//         for(int i = year; i < 1900; i++){
+//             if(isLeapyead(i)){
+//                 totaldays -= 366;  // Subtract!
+//             }
+//             else {
+//                 totaldays -= 365;  // Subtract!
+//             }
+//         }
+//     }
+    
+//     return totaldays;
+// }
+// int monthdays(int month, int year){
+//     int totaldays=0;
+//     for(int i=1;i<month;i++){
+//         totaldays+=getday(i,year);
+//     }
+//     return totaldays;
+// }
+
+
+
+
+
+string dayOfTheWeek(int day, int month, int year) 
+{
+    // Write your code here.
+    int totaldays=0;
+    
+    totaldays+=(day-1);
+    string days[] = {"Monday", "Tuesday", "Wednesday", "Thursday", 
+                     "Friday", "Saturday", "Sunday"};
+    return  days[(totaldays % 7 + 7) % 7];
+    
+
+}
+int countyear(int year) {
+    int totaldays = 0;
+    int y;
+    
+    if (year >= 1900) {
+        y = year - 1900;  // Years to count forward
+        
+        // Calculate days without loop
+        int cycles400 = y / 400;
+        int cycles100 = y / 100;
+        int cycles4 = y / 4;
+        
+        totaldays = y * 365 + cycles4 - cycles100 + cycles400;
+    }
+    else {
+        y = 1900 - year;  // Years to count backward
+        
+        int cycles400 = y / 400;
+        int cycles100 = y / 100;
+        int cycles4 = y / 4;
+        
+        totaldays = -(y * 365 + cycles4 - cycles100 + cycles400);
+    }
+    
+    return totaldays;
+}
