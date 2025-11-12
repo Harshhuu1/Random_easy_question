@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+vector<pair<int, int>> evaluateExpression(vector<pair<int, int>> &arr, int n) 
+// degree -> sum of coefficients
+ {
+    map<int, int> mp; // degree -> sum of coefficients
+    for (int i = 0; i < n; i++) {
+        mp[arr[i].second] += arr[i].first;
+    }
+
+    vector<pair<int,int>> ans;
+    for (auto it = mp.rbegin(); it != mp.rend(); it++) {
+        if (it->second != 0) // ignore zero coefficients
+            ans.push_back({it->second, it->first});
+    }
+    return ans;
+
+}
+    
