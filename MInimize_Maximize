@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+int minimizeMaximum(int arr[], int n, int k)
+{sort(arr,arr+n);
+    int minn=1e9;
+    int maxx=-1e9;
+    int ans=arr[n-1]-arr[0];
+    for(int i=0;i<n;i++){
+       int minn=min(arr[0]+k,arr[i+1]-k);
+       int maxx=max(arr[i]+k,arr[n-1]-k); 
+        int diff=maxx-minn;
+        ans=min(ans,diff);
+        
+    }
+     
+    return ans;
+    
+    
+
+}
